@@ -47,10 +47,20 @@ gulp files updated-->
                     </div>
 
                     <ul>
-                     
-                        <li ng-repeat="oneMovie in movies">
-                            {{ oneMovie }}
-                    
+
+                        <li ng-class="{ favorite: oneMovie.isLiked }" ng-repeat="oneMovie in movies">
+                            <!--{{ oneMovie }}-->
+                            <p>{{ oneMovie.movieName}}</p>
+                            <p>{{ oneMovie.movieDate}}</p>
+                            <p>{{ oneMovie.movieGenre}}</p>
+                            <div id="likebtns">
+                                
+                                <button id="like" ng-click="movieLike(oneMovie)">Sweet</button>
+                                <p ng-show="oneMovie.movieLike(oneMovie)">Sweet!</p>
+                                
+                                <button id="dislike" ng-click="movieHate(oneMovie)">Rotten</button>
+                                <p ng-show="oneMovie.movieHate(oneMovie)">Rotten!</p>
+                            </div>
                         </li>
                     </ul>
         </section>

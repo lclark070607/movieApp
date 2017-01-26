@@ -105,7 +105,7 @@ h1 {
 
 
     button {
-      @include grid-column(7);
+      @include grid-column(2);
       @include button;
       margin-top: 20px;
       margin-left: 250px;
@@ -127,9 +127,24 @@ h1 {
     color: white;
   }
 
+ul {
+  @include grid-row();
+}
+
 li {
-  text-decoration-style: none;
+  @include grid-column(8);
+  text-align: center;
+  list-style-type: none;
   border: black solid 2px;
+  
+  #likebtns {
+    @include grid-row();
+    display: flex;
+    justify-content: space-around;
+  }
+  button #like #dislike {
+    @include grid-column(6);
+  }
 }
    
 

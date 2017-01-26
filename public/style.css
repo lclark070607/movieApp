@@ -1371,7 +1371,7 @@ div #text-box {
     clear: both; }
 
 button {
-  width: 58.33333%;
+  width: 16.66667%;
   float: left;
   padding-right: 0.625rem;
   padding-left: 0.625rem;
@@ -1451,6 +1451,49 @@ button {
     background-color: #14679e;
     color: #fefefe; }
 
+ul {
+  max-width: 75rem;
+  margin-right: auto;
+  margin-left: auto; }
+  ul::before, ul::after {
+    display: table;
+    content: ' '; }
+  ul::after {
+    clear: both; }
+
 li {
-  text-decoration-style: none;
+  width: 66.66667%;
+  float: left;
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+  text-align: center;
+  list-style-type: none;
   border: black solid 2px; }
+  @media print, screen and (min-width: 40em) {
+    li {
+      padding-right: 0.9375rem;
+      padding-left: 0.9375rem; } }
+  li:last-child:not(:first-child) {
+    float: right; }
+  li #likebtns {
+    max-width: 75rem;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-around; }
+    li #likebtns::before, li #likebtns::after {
+      display: table;
+      content: ' '; }
+    li #likebtns::after {
+      clear: both; }
+  li button #like #dislike {
+    width: 50%;
+    float: left;
+    padding-right: 0.625rem;
+    padding-left: 0.625rem; }
+    @media print, screen and (min-width: 40em) {
+      li button #like #dislike {
+        padding-right: 0.9375rem;
+        padding-left: 0.9375rem; } }
+    li button #like #dislike:last-child:not(:first-child) {
+      float: right; }

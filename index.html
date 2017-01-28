@@ -13,6 +13,7 @@ gulp files updated-->
 
     <!--add js file-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <script src="https://use.fontawesome.com/cf95397418.js"></script>
     <script src="app.js"></script>
 
 </head>
@@ -54,25 +55,16 @@ gulp files updated-->
 
                 <li ng-repeat="newMovie in movies">
                     <!--{{ oneMovie }}-->
-                    <img ng-src="{{ newMovie.poster_path }}">
+                    <img ng-src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{ newMovie.poster_path }}" />
                     <h3>{{ newMovie.title }}</h3>
                     <p>Release Year: {{ newMovie.release_date }}</p>
-                    <!--<p>Genre: {{ newMovie.movieGenre}}</p>-->
+
+                    <h4>Sweetness Rating</h4>
+                    <div ng-init="rating = star.rating - 1"></div>
+
+                    <div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
 
 
-                    <!--<div id="starRating" ng-controller="StarRatingController" class="container">
-                        <h1>Sweetness</h1>
-                        <div class="star-rating" ng-model="rating.rating1" max="5" on-rating-select="rating.rateFunction(rating)"></div>
-
-                    </div>-->
-                    <!--<div id="likebtns">
-
-                                <!-<button id="like" ng-click="movieLike(oneMovie)">Sweet</button>
-                                <p ng-show="oneMovie.movieLike(oneMovie)">Sweet!</p>
-                                
-                                <button id="dislike" ng-click="movieHate(oneMovie)">Rotten</button>
-                                <p ng-show="oneMovie.movieHate(oneMovie)">Rotten!</p>-->
-                    <!--</div>->-->
                 </li>
             </ul>
         </section>

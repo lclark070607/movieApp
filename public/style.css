@@ -1405,52 +1405,6 @@ button {
     background-color: #14679e;
     color: #fefefe; }
 
-#like {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 0 1rem 0;
-  padding: 0.85em 1em;
-  -webkit-appearance: none;
-  border: 1px solid transparent;
-  border-radius: 0;
-  transition: background-color 0.25s ease-out, color 0.25s ease-out;
-  font-size: 0.9rem;
-  line-height: 1;
-  text-align: center;
-  cursor: pointer;
-  background-color: #1779ba;
-  color: #fefefe;
-  background-color: purple;
-  color: white; }
-  [data-whatinput='mouse'] #like {
-    outline: 0; }
-  #like:hover, #like:focus {
-    background-color: #14679e;
-    color: #fefefe; }
-
-#dislike {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 0 1rem 0;
-  padding: 0.85em 1em;
-  -webkit-appearance: none;
-  border: 1px solid transparent;
-  border-radius: 0;
-  transition: background-color 0.25s ease-out, color 0.25s ease-out;
-  font-size: 0.9rem;
-  line-height: 1;
-  text-align: center;
-  cursor: pointer;
-  background-color: #1779ba;
-  color: #fefefe;
-  background-color: black;
-  color: white; }
-  [data-whatinput='mouse'] #dislike {
-    outline: 0; }
-  #dislike:hover, #dislike:focus {
-    background-color: #14679e;
-    color: #fefefe; }
-
 ul {
   max-width: 75rem;
   margin-right: auto;
@@ -1462,38 +1416,54 @@ ul {
     clear: both; }
 
 li {
-  width: 66.66667%;
+  width: 29.16667%;
   float: left;
   padding-right: 0.625rem;
   padding-left: 0.625rem;
   text-align: center;
   list-style-type: none;
-  border: black solid 2px; }
+  border: black solid 2px;
+  font-size: 1em; }
   @media print, screen and (min-width: 40em) {
     li {
       padding-right: 0.9375rem;
       padding-left: 0.9375rem; } }
   li:last-child:not(:first-child) {
     float: right; }
-  li #likebtns {
+  li .rating {
     max-width: 75rem;
     margin-right: auto;
     margin-left: auto;
-    display: flex;
-    justify-content: space-around; }
-    li #likebtns::before, li #likebtns::after {
+    color: #a9a9a9;
+    text-shadow: 1px black;
+    margin: 0;
+    padding: 0; }
+    li .rating::before, li .rating::after {
       display: table;
       content: ' '; }
-    li #likebtns::after {
+    li .rating::after {
       clear: both; }
-  li button #like #dislike {
-    width: 50%;
+  li ul.rating {
+    width: 100%;
     float: left;
     padding-right: 0.625rem;
-    padding-left: 0.625rem; }
+    padding-left: 0.625rem;
+    display: flex;
+    justify-content: center; }
     @media print, screen and (min-width: 40em) {
-      li button #like #dislike {
+      li ul.rating {
         padding-right: 0.9375rem;
         padding-left: 0.9375rem; } }
-    li button #like #dislike:last-child:not(:first-child) {
+    li ul.rating:last-child:not(:first-child) {
       float: right; }
+  li h4 {
+    margin-bottom: 0; }
+  li .rating li {
+    list-style-type: none;
+    padding: 1px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    border: none; }
+  li .rating .filled {
+    color: darkorange; }

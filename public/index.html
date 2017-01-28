@@ -10,7 +10,7 @@ gulp files updated-->
     <!--Add css file-->
     <link rel="stylesheet" href="style.css">
     <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Londrina+Solid" rel="stylesheet">
     <!--add js file-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
     <script src="https://use.fontawesome.com/cf95397418.js"></script>
@@ -55,15 +55,21 @@ gulp files updated-->
 
                 <li ng-repeat="newMovie in movies">
                     <!--{{ oneMovie }}-->
-                    <img ng-src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{ newMovie.poster_path }}" />
-                    <h3>{{ newMovie.title }}</h3>
-                    <p>Release Year: {{ newMovie.release_date }}</p>
+                    <div id="container">
+                        <div id="movieShow">
+                            <img ng-src="https://image.tmdb.org/t/p/w185_and_h278_bestv2{{ newMovie.poster_path }}" />
+                            <h3>{{ newMovie.title }}</h3>
+                        </div>
+                        <div id="movieInfo">
+                            <p>{{ newMovie.overview}}</p>
+                            <p id="release">Release Year: {{ newMovie.release_date }}</p>
+                            <h3>Sweetness Rating</h3>
+                            <div ng-init="rating = star.rating - 1"></div>
 
-                    <h4>Sweetness Rating</h4>
-                    <div ng-init="rating = star.rating - 1"></div>
-
-                    <div class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
-
+                            <div ng-hide="newMovie.isRated" ng-click="ratedMovie(newMovie)" class="star-rating" star-rating rating-value="rating" data-max="5" on-rating-selected="rateFunction(rating)"></div>
+                            <p class="hidden">I just jammed {{ newMovie.title }}!</p>
+                        </div>
+                    </div>
 
                 </li>
             </ul>

@@ -1,62 +1,70 @@
 const app = angular.module('MovieApp', []);
 
-app.controller('MovieListController', function ($scope, MovieService) {
-    $scope.movies = MovieService.getMovies();
+// constructor for creating new movies
+function movie(title, release_date) {
+    this.title = title;
+    this.release_date = release_date;
+    // this.movieGenre = movieGenre;
+    this.poster_path = null;
+    this.id = null;
+    this.added = null;
+
+    return this;
+}
+
+app.controller('newMovieController', function ($scope, MovieService) {
+    
+    $scope.title = '';
+    $scope.release_date = '';
+    // $scope.movieGenre = '';
 
 
     $scope.newMovie = function () {
-        let jams = {
-            movieName: $scope.movieName,
-            movieDate: $scope.movieDate,
-            movieGenre: $scope.movieGenre,
-            movieLike: $scope.movieLike,
-            movieHate: $scope.movieHate,
-        };
 
-        MovieService.addMovie(jams);
+        const brandNewMovie = new Movie($scope.title, $scope.release_date);
 
         //clears my textboxes after submit
-        $scope.movieName = '';
-        $scope.movieDate = '';
-        $scope.movieGenre = '';
+        $scope.title = '';
+        $scope.release_date = '';
+
     };
 
-    $scope.movieLike = function (target) {
-        MovieService.likeMovie(target);
-    };
+});
 
-    $scope.movieHate = function(zing) {
-        MovieService.hateMovie(zing);
-    };
-    
+app.controller('ListMovieController', function ($scope, MovieService) {
+    $scope.movies = MovieService.getMovies
+
 });
 
 
+// app.controller('StarRatingController', function ($scope, MovieService) {
 
-app.factory('MovieService', function () {
+
+// }
+
+
+app.factory('MovieService', function ($http) {
     let movies = [];
+
+    $http.get('https://api.themoviedb.org/4/list/14842?page=1&api_key=b2ff2aa190e51a05f0b622f779200cd5').then(function (response) {
+        angular.copy(response.data.results, movies);
+    });
 
     return {
 
-        addMovie: function (input) {
-            movies.push(input);
-        },
+        add(movie) {
+            movies.push(movie);
 
-        bombMovie: function() {
-            movies.classList.add("dislike");
+            $http.post('https://api.themoviedb.org/4/list/14842?page=1&api_key=b2ff2aa190e51a05f0b622f779200cd5', {
+                title: movie.title,
+                release_date: movie.release_date,
+            });
         },
 
         getMovies: function () {
             return movies;
         },
 
-        likeMovie: function(moo) {
-            moo.isLiked = true;
-        },
-
-        hateMovie: function(baa) {
-            baa.isHated = true;
-        },
     };
 });
 

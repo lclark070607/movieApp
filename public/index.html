@@ -36,33 +36,45 @@ gulp files updated-->
     <main>
 
         <h1>What's Your Jam?</h1>
-        <section ng-controller="MovieListController">
+        <section ng-controller="NewMovieController">
             <div id="text-box">
-                <input id="text-a" type="text" ng-model="movieName" placeholder="movie title">
-                <input id="text-b" type="text" ng-model="movieDate" placeholder="release date">
-                <input id="text-c" type="text" ng-model="movieGenre" placeholder="genre">
+                <input id="text-a" type="text" ng-model="title" placeholder="movie title">
+                <input id="text-b" type="text" ng-model="release_date" placeholder="year released">
+                <!--<input id="text-c" type="text" ng-model="movieGenre" placeholder="genre">-->
                 <div>
                     <div id="submitbtn">
                         <button ng-click="newMovie()">Add your jam</button>
                     </div>
 
-                    <ul>
+        </section>
 
-                        <li ng-class="{ favorite: oneMovie.isLiked }" ng-repeat="oneMovie in movies">
-                            <!--{{ oneMovie }}-->
-                            <p>{{ oneMovie.movieName}}</p>
-                            <p>{{ oneMovie.movieDate}}</p>
-                            <p>{{ oneMovie.movieGenre}}</p>
-                            <div id="likebtns">
+        <h1>Rate Your Fantasy Jam!</h1>
+        <section ng-controller="ListMovieController">
+            <ul>
 
-                                <button id="like" ng-click="movieLike(oneMovie)">Sweet</button>
+                <li ng-repeat="newMovie in movies">
+                    <!--{{ oneMovie }}-->
+                    <img ng-src="{{ newMovie.poster_path }}">
+                    <h3>{{ newMovie.title }}</h3>
+                    <p>Release Year: {{ newMovie.release_date }}</p>
+                    <!--<p>Genre: {{ newMovie.movieGenre}}</p>-->
+
+
+                    <!--<div id="starRating" ng-controller="StarRatingController" class="container">
+                        <h1>Sweetness</h1>
+                        <div class="star-rating" ng-model="rating.rating1" max="5" on-rating-select="rating.rateFunction(rating)"></div>
+
+                    </div>-->
+                    <!--<div id="likebtns">
+
+                                <!-<button id="like" ng-click="movieLike(oneMovie)">Sweet</button>
                                 <p ng-show="oneMovie.movieLike(oneMovie)">Sweet!</p>
                                 
                                 <button id="dislike" ng-click="movieHate(oneMovie)">Rotten</button>
-                                <p ng-show="oneMovie.movieHate(oneMovie)">Rotten!</p>
-                            </div>
-                        </li>
-                    </ul>
+                                <p ng-show="oneMovie.movieHate(oneMovie)">Rotten!</p>-->
+                    <!--</div>->-->
+                </li>
+            </ul>
         </section>
 
 
